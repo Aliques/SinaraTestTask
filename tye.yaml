@@ -1,0 +1,21 @@
+name: usersblazorapp
+ingress: 
+  - name: ingress
+    bindings:
+      - port: 8080
+        protocol: https
+    rules:
+      - path: /api
+        service: usermanagement-service
+      - service: blazorapp-server
+services:
+- name: blazorapp-server
+  project: BlazorApp/Server/BlazorApp.Server.csproj
+  bindings: 
+  - port: 5148
+    protocol: http
+- name: usermanagement-service
+  project: UserManagementService/UserManagementService.csproj
+  bindings: 
+  - port: 5134
+    protocol: http
