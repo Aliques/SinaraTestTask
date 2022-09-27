@@ -1,33 +1,29 @@
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using UserManagement.Common.Dtos;
+using UserManagement.Data.Repositories;
 
 namespace UserManagementService.Controllers
 {
+    [Route("api/[controller]")]
     [ApiController]
-    [Route("[controller]")]
     public class UsersController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
+        private readonly IUserRepository _userRepository;
+        private readonly IMapper _mapper;
 
-        private readonly ILogger<UsersController> _logger;
-
-        public UsersController(ILogger<UsersController> logger)
+        public UsersController(IUserRepository userRepository, IMapper mapper)
         {
-            _logger = logger;
+            _userRepository = userRepository;
+            _mapper = mapper;
         }
 
         [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
+        public async Task<ActionResult<IEnumerable<UserDto>>> GetUsers()
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+            var items = await _userRepository.GetAllUsersAsync();
+
+            return Ok(_mapper.Map<IEnumerable<UserDto>>(items));
         }
     }
 }
