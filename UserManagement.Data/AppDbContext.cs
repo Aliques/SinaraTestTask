@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using UserManagement.Domain;
 
-namespace UserManagement.Data
+namespace UserManagement.Infrastructure.Data
 {
     public class AppDbContext : DbContext
     {

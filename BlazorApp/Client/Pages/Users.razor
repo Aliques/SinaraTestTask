@@ -1,0 +1,41 @@
+﻿@page "/"
+@using MudBlazor
+@inject HttpClient Http
+@using UserManagement.Common.Dtos
+
+<PageTitle>User manager</PageTitle>
+
+<MudButton Variant="Variant.Filled"
+           Class="mb-3"
+           Color="Color.Primary"
+           OnClick="Create">
+    Создать
+</MudButton>
+
+<MudTable Items="@_users"
+          Hover="true"
+          Breakpoint="Breakpoint.Sm"
+          @ref="mudTable"
+          Loading="_loading"
+          T="UserDto">
+    <HeaderContent>
+        <MudTh>Name</MudTh>
+        <MudTh>Surname</MudTh>
+        <MudTh>Patronymic</MudTh>
+        <MudTh>ADLogin</MudTh>
+        <MudTh>Actions</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Name">@context.Name</MudTd>
+        <MudTd DataLabel="Surname">@context.Surname</MudTd>
+        <MudTd DataLabel="Patronymic">@context.Patronymic</MudTd>
+        <MudTd DataLabel="ADLogin">@context.ADLogin</MudTd>
+        <MudTd>
+            <MudIconButton OnClick="@(()=>ChangeUserData(context))" Icon="@Icons.Material.Filled.Edit">
+            </MudIconButton>
+            <MudIconButton OnClick="@(()=>Delete(context.Id))" Icon="@Icons.Material.Filled.Delete">
+            </MudIconButton>
+        </MudTd>
+    </RowTemplate>
+</MudTable>
+

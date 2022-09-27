@@ -12,14 +12,17 @@ namespace UserManagement.Domain
         [Key]
         public Guid Id { get; set; }
 
-        [Required]
+        [Required(AllowEmptyStrings = false)]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "The Name must be a string with the exact length of 2.")]
         public string Name { get; set; }
 
-        [Required]
+        [Required(AllowEmptyStrings = false)]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "The Surname must be a string with the exact length of 2.")]
         public string Surname { get; set; }
         public string Patronymic { get; set; }
 
-        [Required]
+        [Required(AllowEmptyStrings = false)]
+        [StringLength(70, MinimumLength = 3, ErrorMessage = "The Active Directory Login must be a string with the exact length of 2.")]
         public string ADLogin { get; set; }
         public UserStatus UserStatus { get; set; } = UserStatus.Active;
     }

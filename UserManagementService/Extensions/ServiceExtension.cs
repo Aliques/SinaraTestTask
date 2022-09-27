@@ -1,9 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
-using UserManagement.Data;
-using UserManagement.Data.Profiles;
-using UserManagement.Data.Repositories;
+using UserManagement.Application.Interfaces.Repositories;
+using UserManagement.Application.Interfaces.Services;
+using UserManagement.Infrastructure.Data;
+using UserManagement.Infrastructure.Profiles;
+using UserManagement.Infrastructure.Repositories;
+using UserManagement.Infrastructure.Services;
 
 namespace UserManagementService.Extensions
 {
@@ -19,6 +22,7 @@ namespace UserManagementService.Extensions
         {
             services.AddAutoMapper(Assembly.GetAssembly(typeof(UsersProfiles)));
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserService, UserService>();
         }
     }
 }

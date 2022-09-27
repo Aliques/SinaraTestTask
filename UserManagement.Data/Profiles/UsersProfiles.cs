@@ -2,7 +2,7 @@
 using UserManagement.Common.Dtos;
 using UserManagement.Domain;
 
-namespace UserManagement.Data.Profiles
+namespace UserManagement.Infrastructure.Profiles
 {
     public class UsersProfiles : Profile
     {
@@ -10,6 +10,7 @@ namespace UserManagement.Data.Profiles
         {
             CreateMap<User, UserDto>();
             CreateMap<UserCreateDto, User>();
+            CreateMap<UserUpdateDto, User>();
         }
     }
 }

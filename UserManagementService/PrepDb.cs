@@ -1,5 +1,5 @@
-﻿using UserManagement.Data;
-using UserManagement.Domain;
+﻿using UserManagement.Domain;
+using UserManagement.Infrastructure.Data;
 
 namespace UserManagementService
 {

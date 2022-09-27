@@ -1,0 +1,32 @@
+﻿<MudContainer>
+<h3>UserModal</h3>
+
+<MudGrid Class="flex-column pa-8" Justify="Justify.Center">
+    <MudItem>
+        <MudTextField @bind-Value="User.Name" Label="Name" Variant="Variant.Text"></MudTextField>
+    </MudItem>
+    <MudItem>
+        <MudTextField @bind-Value="User.Surname" Label="Name" Variant="Variant.Text"></MudTextField>
+    </MudItem>
+    <MudItem>
+        <MudTextField @bind-Value="User.Patronymic" Label="Name" Variant="Variant.Text"></MudTextField>
+    </MudItem>
+    <MudItem>
+        <MudTextField @bind-Value="User.ADLogin" Label="Name" Variant="Variant.Text"></MudTextField>
+    </MudItem>
+
+    @if (CreationMode)
+    {
+        <MudButton Variant="Variant.Filled"
+               Color="Color.Primary"
+               OnClick="Create">Создать</MudButton>
+    }
+    else
+    {
+        <MudButton Variant="Variant.Filled"
+               Color="Color.Primary"
+               OnClick="Save">Сохранить</MudButton>
+    }
+
+</MudGrid>
+</MudContainer>
