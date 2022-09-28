@@ -40,12 +40,19 @@ namespace BlazorApp.Client.Pages
         {
             var parameters = new DialogParameters
             {
-                ["User"] = user,
+                ["User"] = new UserUpdateDto
+                {
+                    Id = user.Id,
+                    Name = user.Name,
+                    Surname = user.Surname,
+                    Patronymic = user.Patronymic,
+                    ADLogin = user.ADLogin
+                },
                 ["CreationMode"] = false
             };
 
             var dialog = DialogService.Show<UserModal>("Изменить", parameters,
-                new DialogOptions { MaxWidth = MaxWidth.Medium });
+                new DialogOptions { MaxWidth = MaxWidth.Large });
             var result = await dialog.Result;
             await LoadData();
         }
@@ -68,7 +75,7 @@ namespace BlazorApp.Client.Pages
                 ["CreationMode"] = true
             };
 
-            var dialog = DialogService.Show<UserModal>("Создать", parameters);
+            var dialog = DialogService.Show<UserModal>("Создать", parameters, new DialogOptions { MaxWidth = MaxWidth.Large });
             var result = await dialog.Result;
             await LoadData();
         }

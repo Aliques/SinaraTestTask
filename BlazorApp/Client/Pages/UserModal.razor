@@ -1,32 +1,35 @@
 ﻿<MudContainer>
-<h3>UserModal</h3>
+    <h3>UserModal</h3>
 
-<MudGrid Class="flex-column pa-8" Justify="Justify.Center">
-    <MudItem>
-        <MudTextField @bind-Value="User.Name" Label="Name" Variant="Variant.Text"></MudTextField>
-    </MudItem>
-    <MudItem>
-        <MudTextField @bind-Value="User.Surname" Label="Name" Variant="Variant.Text"></MudTextField>
-    </MudItem>
-    <MudItem>
-        <MudTextField @bind-Value="User.Patronymic" Label="Name" Variant="Variant.Text"></MudTextField>
-    </MudItem>
-    <MudItem>
-        <MudTextField @bind-Value="User.ADLogin" Label="Name" Variant="Variant.Text"></MudTextField>
-    </MudItem>
+    <MudGrid Class="flex-column pa-5" Justify="Justify.Center">
+        <EditForm Model="@User" OnValidSubmit="@Submit">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <MudItem Class="m-3">
+                <MudTextField @bind-Value="User.Name" Label="Name" Variant="Variant.Text"></MudTextField>
+            </MudItem>
+            <MudItem Class="m-3">
+                <MudTextField @bind-Value="User.Surname" Label="Surname" Variant="Variant.Text"></MudTextField>
+            </MudItem>
+            <MudItem Class="m-3">
+                <MudTextField @bind-Value="User.Patronymic" Label="Patronymic" Variant="Variant.Text"></MudTextField>
+            </MudItem>
+            <MudItem Class="m-3">
+                <MudTextField @bind-Value="User.ADLogin" Label="ADLogin" Variant="Variant.Text"></MudTextField>
+            </MudItem>
 
-    @if (CreationMode)
-    {
-        <MudButton Variant="Variant.Filled"
-               Color="Color.Primary"
-               OnClick="Create">Создать</MudButton>
-    }
-    else
-    {
-        <MudButton Variant="Variant.Filled"
-               Color="Color.Primary"
-               OnClick="Save">Сохранить</MudButton>
-    }
-
-</MudGrid>
+            @if (CreationMode)
+            {
+                <MudButton Variant="Variant.Filled"
+                       Color="Color.Primary"
+                       ButtonType="ButtonType.Submit">Создать</MudButton>
+            }
+            else
+            {
+                <MudButton Variant="Variant.Filled"
+                       Color="Color.Primary"
+                       ButtonType="ButtonType.Submit">Сохранить</MudButton>
+            }
+        </EditForm>
+    </MudGrid>
 </MudContainer>

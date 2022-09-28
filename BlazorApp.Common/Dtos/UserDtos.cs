@@ -1,4 +1,5 @@
-﻿using UserManagement.Common.Enums;
+﻿using System.ComponentModel.DataAnnotations;
+using UserManagement.Common.Enums;
 
 namespace UserManagement.Common.Dtos
 {
@@ -15,18 +16,34 @@ namespace UserManagement.Common.Dtos
 
     public class UserCreateDto
     {
+        [Required]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "The Surname must be a string with the exact length of 2.")]
         public string Name { get; set; }
+
+        [Required]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "The Surname must be a string with the exact length of 2.")]
         public string Surname { get; set; }
         public string Patronymic { get; set; }
+
+        [Required]
+        [StringLength(70, MinimumLength = 3, ErrorMessage = "The Active Directory Login must be a string with the exact length of 2.")]
         public string ADLogin { get; set; }
     }
 
     public class UserUpdateDto
     {
         public Guid Id { get; set; }
+        [Required]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "The Name must be a string with the exact length of 2.")]
         public string Name { get; set; }
+
+        [Required]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "The Surname must be a string with the exact length of 2.")]
         public string Surname { get; set; }
         public string Patronymic { get; set; }
+
+        [Required]
+        [StringLength(70, MinimumLength = 3, ErrorMessage = "The Active Directory Login must be a string with the exact length of 2.")]
         public string ADLogin { get; set; }
     }
 }
