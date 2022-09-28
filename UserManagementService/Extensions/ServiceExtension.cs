@@ -20,9 +20,11 @@ namespace UserManagementService.Extensions
 
         public static void ServicesCofiguration(this IServiceCollection services)
         {
+            //services.AddSingleton<IMessageBusClient, MessageBusService>();
             services.AddAutoMapper(Assembly.GetAssembly(typeof(UsersProfiles)));
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserService, UserService>();
+            services.AddHttpClient<ISyncDataService, SyncDataService>();
         }
     }
 }

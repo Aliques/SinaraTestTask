@@ -7,7 +7,7 @@ using UserManagement.Infrastructure.Repositories;
 
 namespace UserManagementService.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/us/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
     {

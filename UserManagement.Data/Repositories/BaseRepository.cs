@@ -5,6 +5,10 @@ using UserManagement.Infrastructure.Data;
 
 namespace UserManagement.Infrastructure.Repositories
 {
+    /// <summary>
+    /// TODO: по идее выносится в core-сборку
+    /// </summary>
+    /// <typeparam name="TEntityId">The Entity identificator type</typeparam>
     public class BaseRepository<TEntityId>
     {
         protected readonly AppDbContext _context;
